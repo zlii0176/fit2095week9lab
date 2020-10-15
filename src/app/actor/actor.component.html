@@ -1,0 +1,32 @@
+<h3>actor works!</h3>
+
+<button type = 'submit' [ngClass]="{'btn-primary':section==1,'btn-danger':section!=1}" class="btn" (click)='changeSection(1)'>List Actor</button>
+<button type = 'submit' [ngClass]="{'btn-primary':section==2,'btn-danger':section!=2}" class="btn" (click)='changeSection(2)'>add Actor</button>
+<p>next</p>
+<button type = 'submit' [ngClass]="changeClass(1)"  class="btn" (click)='changeSection(1)'>List Actor</button>
+<button type = 'submit' [ngClass]="changeClass(2)" class="btn" (click)='changeSection(2)'>add Actor</button>
+
+<div class = 'section' *ngIf="section==1">
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Brith Year</th>
+        </tr>
+        <tr *ngFor="let item of actorsDB">
+            <td>{{item.name}}</td>
+            <td>{{item.bYear}}</td>
+        </tr>
+    </table>
+</div>
+
+<div class = 'section' *ngIf="section==2">
+    <div class = "form-group">
+        <label for="actorName">Full Name</label>
+        <input type='text' class="form-control" id="actorName" [(ngModel)]="fullName">
+    </div>
+    <div class = "form-group">
+        <label for="actorName">Birth Year</label>
+        <input type='number' class="form-control" id="actorName" [(ngModel)]="bYear">
+    </div>
+    <button type = 'submit' class="btn btn-primary" (click)='onSaveActor()'>Save Actor</button>
+</div>
